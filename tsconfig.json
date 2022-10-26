@@ -12,6 +12,9 @@
     "paths": {
       "@/*": ["*"]
     },
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true
   }
 }
