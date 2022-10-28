@@ -1,4 +1,4 @@
-import { CreateCategoriesController } from "@/modules/cars/useCases/createCategories/CreateCategoriesController"
+import { CreateCategoriesController } from "@/modules/cars/createCategories/CreateCategoriesController"
 import { Router } from "express"
 
 const categoriesRoutes = Router()
