@@ -5,9 +5,6 @@ const specificationRoutes = Router()
 
 const createSpecificationController = new CreateSpecificationController()
 
-specificationRoutes.post(
-  "/specification/create",
-  createSpecificationController.handle
-)
+specificationRoutes.post("/", createSpecificationController.handle)
 
 export { specificationRoutes }

@@ -14,11 +14,11 @@ const createCategoriesController = new CreateCategoriesController()
 const listCategoriesController = new ListCategoriesController()
 const importCategoriesController = new ImportCategoriesController()
 
-categoriesRoutes.post("/categories/create", createCategoriesController.handle)
-categoriesRoutes.get("/categories/list", listCategoriesController.handle)
+categoriesRoutes.post("/create", createCategoriesController.handle)
+categoriesRoutes.get("/list", listCategoriesController.handle)
 
 categoriesRoutes.post(
-  "/categories/upload",
+  "/upload",
   upload.single("file"),
   importCategoriesController.handle
 )
