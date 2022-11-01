@@ -1,12 +1,12 @@
 import { Request, Response } from "express"
-import { container } from "tsyringe"
 import { CreateCategoriesUseCase } from "./CreateCategoriesUseCase"
+import "reflect-metadata"
 
 class CreateCategoriesController {
   async handle(request: Request, response: Response) {
     const { name, description } = request.body
 
-    const createCategoriesUseCase = container.resolve(CreateCategoriesUseCase)
+    const createCategoriesUseCase = new CreateCategoriesUseCase()
 
     const result = await createCategoriesUseCase.execute({
       name,

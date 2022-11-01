@@ -1,5 +1,4 @@
 import { Request, Response } from "express"
-import { container } from "tsyringe"
 import { ImportCategoriesUseCase } from "./ImportCategoriesUseCase"
 
 class ImportCategoriesController {
@@ -10,7 +9,7 @@ class ImportCategoriesController {
       return response.status(400).json({ message: "Bad request" })
     }
 
-    const importCategoriesUseCase = container.resolve(ImportCategoriesUseCase)
+    const importCategoriesUseCase = new ImportCategoriesUseCase()
 
     const result = importCategoriesUseCase.execute(file)
 
