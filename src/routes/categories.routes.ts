@@ -3,6 +3,7 @@ import { ListCategoriesController } from "@/modules/cars/listCategories/ListCate
 import { Router } from "express"
 import multer from "multer"
 import { ImportCategoriesController } from "@/modules/cars/importCategories/ImportCategoriesController"
+import { ValidateUserAuthentication } from "@/middleware/ValidateUserAuthentication"
 
 const upload = multer({
   dest: "./tmp",
@@ -15,7 +16,11 @@ const listCategoriesController = new ListCategoriesController()
 const importCategoriesController = new ImportCategoriesController()
 
 categoriesRoutes.post("/create", createCategoriesController.handle)
-categoriesRoutes.get("/list", listCategoriesController.handle)
+categoriesRoutes.get(
+  "/list",
+  ValidateUserAuthentication,
+  listCategoriesController.handle
+)
 
 categoriesRoutes.post(
   "/upload",
