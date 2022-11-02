@@ -3,7 +3,7 @@ import { CreateUserUseCase } from "./CreateUserUseCase"
 
 class CreateUserController {
   async handle(request: Request, response: Response) {
-    const { name, username, password, driver_license, email } = request.body
+    const { name, username, password, email, driver_license } = request.body
 
     const createUserUseCase = new CreateUserUseCase()
 
@@ -11,8 +11,8 @@ class CreateUserController {
       name,
       username,
       password,
-      driver_license,
       email,
+      driver_license,
     })
 
     return response.status(201).send()
