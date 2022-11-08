@@ -28,11 +28,17 @@ async function ValidateUserAuthentication(
       secretKey
     ) as InterfacePayload
 
-    await prisma.user.findFirst({
+    const user = await prisma.user.findFirst({
       where: {
         username,
       },
     })
+
+    if (!user) {
+      return response.status(401).json({
+        message: "User doesn't exists!",
+      })
+    }
 
     return next()
   } catch (error) {
