@@ -1,3 +1,4 @@
+import { AppError } from "@/AppError"
 import { prisma } from "@/database/PrismaClient"
 
 interface ICreateCategories {
@@ -17,7 +18,7 @@ class CreateCategoriesUseCase {
     })
 
     if (categoryExists) {
-      throw new Error("Category already exists!!")
+      throw new AppError("Category already exists!!")
     }
 
     const categories = await prisma.categories.create({

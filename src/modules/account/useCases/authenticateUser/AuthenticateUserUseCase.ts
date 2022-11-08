@@ -1,3 +1,4 @@
+import { AppError } from "@/AppError"
 import { prisma } from "@/database/PrismaClient"
 import * as bcrypt from "bcrypt"
 import { sign } from "jsonwebtoken"
@@ -16,13 +17,13 @@ class AuthenticateUserUseCase {
     })
 
     if (!user) {
-      throw new Error("Invalid credentials!!")
+      throw new AppError("Invalid credentials!!")
     }
 
     const passwordVerification = await bcrypt.compare(password, user.password)
 
     if (!passwordVerification) {
-      throw new Error("Invalid credentials!!")
+      throw new AppError("Invalid credentials!")
     }
 
     const token = sign({ username }, "c4e70ca5e4aef7ce6dcb11e2dab50957", {
